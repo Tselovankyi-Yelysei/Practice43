@@ -33,3 +33,5 @@ promoImgs.forEach(element => {
 console.log(promoImgs);
 
 document.querySelector('.promo__genre').innerHTML = "Драма";
+
+document.querySelector('.promo__bg').style.cssText = `background-image: url(../img/bg.jpg)`;
