@@ -39,15 +39,21 @@ document.querySelector('.promo__genre').innerHTML = "Драма";
 // 3
 document.querySelector('.promo__bg').style.cssText = `background-image: url(../img/bg.jpg)`;
 
-
 // 4
-const watchedFilms = document.querySelector('.promo__interactive-list');
+let watchedFilms = document.querySelector('.promo__interactive-list');
+
+// 5
+watchedFilms.style.cssText = `list-style-type: decimal`;
+watchedFilms.outerHTML = watchedFilms.outerHTML.replace('<ul', '<ol').replace('ul>', 'ol>');
+watchedFilms = document.querySelector('.promo__interactive-list');
+
 
 watchedFilms.querySelectorAll('li').forEach(element => {
     element.remove();
 });
 
 movieDB.movies.forEach(movie => {
-    let actual_movie = `<li class ="promo__interactive-item">${movie}</li>`
+    let actual_movie = `<li class ="promo__interactive-item" style="display: list-item;">${movie}</li>`;
     watchedFilms.insertAdjacentHTML('beforeend', actual_movie);
+
 });
