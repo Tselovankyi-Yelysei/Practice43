@@ -41,21 +41,12 @@ document.querySelector('.promo__bg').style.cssText = `background-image: url('../
 
 // 4 + 5
 let watchedFilms = document.querySelector('.promo__interactive-list');
-
-watchedFilms.style.cssText = `list-style-type: decimal`;
-watchedFilms.outerHTML = watchedFilms.outerHTML.replace('<ul', '<ol').replace('ul>', 'ol>');
-watchedFilms = document.querySelector('.promo__interactive-list');
-
-
-watchedFilms.querySelectorAll('li').forEach(element => {
-    element.remove();
-});
+watchedFilms.innerHTML = "";
 
 let filmArr = [...movieDB.movies];
-debugger
-filmArr = filmArr.sort();
-filmArr.forEach(movie => {
+filmArr.sort();
 
-    let actual_movie = `<li class ="promo__interactive-item" style="display: list-item;">${movie}</li>`;
+filmArr.forEach((movie, i) => {
+    let actual_movie = `<li class ="promo__interactive-item" style="display: list-item;">${i + 1}. ${movie}</li>`;
     watchedFilms.insertAdjacentHTML('beforeend', actual_movie);
 });
