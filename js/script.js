@@ -47,6 +47,9 @@ let filmArr = [...movieDB.movies];
 filmArr.sort();
 
 filmArr.forEach((movie, i) => {
-    let actual_movie = `<li class ="promo__interactive-item" style="display: list-item;">${i + 1}. ${movie}</li>`;
+    let actual_movie =
+        `<li class ="promo__interactive-item">${i + 1}. ${movie}
+            <div class="delete"></div> 
+        </li>`;
     watchedFilms.insertAdjacentHTML('beforeend', actual_movie);
 });
