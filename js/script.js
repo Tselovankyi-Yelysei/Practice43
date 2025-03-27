@@ -31,3 +31,5 @@ promoImgs.forEach(element => {
 });
 
 console.log(promoImgs);
+
+document.querySelector('.promo__genre').innerHTML = "Драма";
