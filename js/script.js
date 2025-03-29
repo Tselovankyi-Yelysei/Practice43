@@ -37,7 +37,7 @@ console.log(promoImgs);
 document.querySelector('.promo__genre').innerHTML = "Драма";
 
 // 3
-document.querySelector('.promo__bg').style.cssText = `background-image: url('../img/bg.jpg')`;
+document.querySelector('.promo__bg').style.cssText = `background-image: url('img/bg.jpg')`;
 
 // 4 + 5
 let watchedFilms = document.querySelector('.promo__interactive-list');
