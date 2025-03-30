@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //1 + 2
     const addButton = document.querySelector('.add > button');
     const addInputField = document.querySelector('.adding__input');
-    // console.log(addButton, addInputField);
+
     addButton.addEventListener('click', function (event) {
         event.preventDefault();
         let newFilm = addInputField.value;
@@ -90,8 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 let elementIndex = movieDB.movies.findIndex(movie => movie === filmName);
                 movieDB.movies.splice(elementIndex, 1);
-
-                elementParent.remove();
+                updateFilmList();
             })
         });
     };
