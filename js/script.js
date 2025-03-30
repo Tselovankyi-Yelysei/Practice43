@@ -18,42 +18,62 @@ P.S. Здесь есть несколько вариантов решения з
 
 'use strict';
 
-const movieDB = {
-    movies: [
-        "Логан",
-        "Лига справедливости",
-        "Ла-ла лэнд",
-        "Одержимость",
-        "Скотт Пилигрим против...",
-        "Жуки",
-    ]
-};
+document.addEventListener('DOMContentLoaded', () => {
+    const movieDB = {
+        movies: [
+            "Логан",
+            "Лига справедливости",
+            "Ла-ла лэнд",
+            "Одержимость",
+            "Скотт Пилигрим против..."
+        ]
+    };
 
-//1
-const promoSection = document.querySelector('.promo__adv');
-const promoImgs = promoSection.querySelectorAll('img');
-promoImgs.forEach(element => {
-    element.remove();
-});
+    //1
+    const promoSection = document.querySelector('.promo__adv');
+    const promoImgs = promoSection.querySelectorAll('img');
+    promoImgs.forEach(element => {
+        element.remove();
+    });
 
-console.log(promoImgs);
-//2 
-document.querySelector('.promo__genre').innerHTML = "Драма";
+    console.log(promoImgs);
+    //2 
+    document.querySelector('.promo__genre').innerHTML = "Драма";
 
-// 3
-document.querySelector('.promo__bg').style.cssText = `background-image: url('img/bg.jpg')`;
+    // 3
+    document.querySelector('.promo__bg').style.cssText = `background-image: url('img/bg.jpg')`;
 
-// 4 + 5
-let watchedFilms = document.querySelector('.promo__interactive-list');
-watchedFilms.innerHTML = "";
+    // 4 + 5
+    let watchedFilms = document.querySelector('.promo__interactive-list');
 
-let filmArr = [...movieDB.movies];
-filmArr.sort();
+    updateFilmList();
 
-filmArr.forEach((movie, i) => {
-    let actual_movie =
-        `<li class ="promo__interactive-item">${i + 1}. ${movie}
-            <div class="delete"></div> 
-        </li>`;
-    watchedFilms.insertAdjacentHTML('beforeend', actual_movie);
+    function updateFilmList() {
+        watchedFilms.innerHTML = "";
+        movieDB.movies.sort();
+        movieDB.movies.forEach((movie, i) => {
+            let actual_movie =
+                `<li class ="promo__interactive-item">${i + 1}. ${movie}
+                     <div class="delete"></div> 
+                 </li>`;
+            watchedFilms.insertAdjacentHTML('beforeend', actual_movie);
+        });
+    };
+
+    //----
+    //1
+    const addButton = document.querySelector('.add > button');
+    const addInputField = document.querySelector('.adding__input');
+    // console.log(addButton, addInputField);
+    addButton.addEventListener('click', function (event) {
+        event.preventDefault();
+        let newFilm = addInputField.value;
+        if (newFilm.length > 21) {
+            newFilm = newFilm.slice(0, 21) + "...";
+        }
+        movieDB.movies.push(newFilm);
+        updateFilmList();
+        addInputField.value = '';
+    });
+
 });
