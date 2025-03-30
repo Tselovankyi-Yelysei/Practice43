@@ -73,7 +73,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     addButton.addEventListener('click', function (event) {
         event.preventDefault();
+
         let newFilm = addInputField.value;
+        if (!newFilm) {
+            return;
+        }
         if (newFilm.length > 21) {
             newFilm = newFilm.slice(0, 21) + "...";
         }
