@@ -58,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
                  </li>`;
             watchedFilms.insertAdjacentHTML('beforeend', actual_movie);
         });
+        updateDeleteButtons();
     };
 
     //----
@@ -77,18 +78,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     //3
-    const deleteButtons = document.querySelectorAll('.delete');
+    function updateDeleteButtons() {
 
-    deleteButtons.forEach(element => {
-        element.addEventListener('click', function (event) {
-            let elementParent = element.parentElement;
-            let filmName = elementParent.textContent;
-            filmName = filmName.trim().slice(3);
+        const deleteButtons = document.querySelectorAll('.delete');
 
-            let elementIndex = movieDB.movies.findIndex(movie => movie === filmName);
-            movieDB.movies.splice(elementIndex, 1);
+        deleteButtons.forEach(element => {
+            element.addEventListener('click', function (event) {
+                let elementParent = element.parentElement;
+                let filmName = elementParent.textContent;
+                filmName = filmName.trim().slice(3);
 
-            elementParent.remove();
-        })
-    });
+                let elementIndex = movieDB.movies.findIndex(movie => movie === filmName);
+                movieDB.movies.splice(elementIndex, 1);
+
+                elementParent.remove();
+            })
+        });
+    };
 });
