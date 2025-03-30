@@ -45,6 +45,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 4 + 5
     let watchedFilms = document.querySelector('.promo__interactive-list');
+    // watchedFilms.style.cssText = `list-style-type: decimal`;
+    // watchedFilms = document.querySelector('.promo__interactive-list');
 
     updateFilmList();
 
@@ -56,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 `<li class ="promo__interactive-item">${i + 1}. ${movie}
                      <div class="delete"></div> 
                  </li>`;
+
             watchedFilms.insertAdjacentHTML('beforeend', actual_movie);
         });
         updateDeleteButtons();
@@ -86,7 +89,8 @@ document.addEventListener('DOMContentLoaded', () => {
             element.addEventListener('click', function (event) {
                 let elementParent = element.parentElement;
                 let filmName = elementParent.textContent;
-                filmName = filmName.trim().slice(3);
+                filmName = filmName.slice(filmName.indexOf('.') + 1).trim();
+                console.log(filmName);
 
                 let elementIndex = movieDB.movies.findIndex(movie => movie === filmName);
                 movieDB.movies.splice(elementIndex, 1);
