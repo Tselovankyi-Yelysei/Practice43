@@ -96,15 +96,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const deleteButtons = document.querySelectorAll('.delete');
 
-        deleteButtons.forEach(element => {
-            element.addEventListener('click', function (event) {
-                let elementParent = element.parentElement;
-                let filmName = elementParent.textContent;
-                filmName = filmName.slice(filmName.indexOf('.') + 1).trim();
-                console.log(filmName);
-
-                let elementIndex = movieDB.movies.findIndex(movie => movie === filmName);
-                movieDB.movies.splice(elementIndex, 1);
+        deleteButtons.forEach((element, i) => {
+            element.addEventListener('click', function () {
+                movieDB.movies.splice(i, 1);
                 updateFilmList();
             })
         });
