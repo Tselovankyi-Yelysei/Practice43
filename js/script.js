@@ -68,6 +68,8 @@ document.addEventListener('DOMContentLoaded', () => {
     //1 + 2
     const addButton = document.querySelector('.add > button');
     const addInputField = document.querySelector('.adding__input');
+    const addCheckbox = document.querySelector('.add > input[type = "checkbox"]');
+
 
     addButton.addEventListener('click', function (event) {
         event.preventDefault();
@@ -78,6 +80,11 @@ document.addEventListener('DOMContentLoaded', () => {
         movieDB.movies.push(newFilm);
         updateFilmList();
         addInputField.value = '';
+
+        if (addCheckbox.checked == true) {
+            console.log("Добавляем любимый фильм!");
+            addCheckbox.checked = false;
+        }
     });
 
     //3
