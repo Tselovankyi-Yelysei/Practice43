@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     //----
-    //1
+    //1 + 2
     const addButton = document.querySelector('.add > button');
     const addInputField = document.querySelector('.adding__input');
     // console.log(addButton, addInputField);
@@ -76,4 +76,19 @@ document.addEventListener('DOMContentLoaded', () => {
         addInputField.value = '';
     });
 
+    //3
+    const deleteButtons = document.querySelectorAll('.delete');
+
+    deleteButtons.forEach(element => {
+        element.addEventListener('click', function (event) {
+            let elementParent = element.parentElement;
+            let filmName = elementParent.textContent;
+            filmName = filmName.trim().slice(3);
+
+            let elementIndex = movieDB.movies.findIndex(movie => movie === filmName);
+            movieDB.movies.splice(elementIndex, 1);
+
+            elementParent.remove();
+        })
+    });
 });
